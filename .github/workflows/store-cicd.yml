@@ -23,7 +23,15 @@ jobs:
       run: |
           npm install
       working-directory: ./src
-      
+
+    - name: Generate prisma
+      run: |
+        npx prisma generate
+
+    - name: Migrate prisma
+      run: |
+        npx prisma migrate dev --name "descripcion del repo"
+
     - name: Run test
       run: |
           npm test
