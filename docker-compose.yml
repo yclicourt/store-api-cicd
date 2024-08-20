@@ -1,6 +1,18 @@
 version: '3.8'
 services:
 
+  app:
+    image: yoadev/app
+    build:
+      context: .
+    command: sh -c 'sleep 10; npm start'
+    env_file:
+      - ./src/.env
+    depends_on:
+      - db
+    networks:
+      - store_network
+
   db:
     image: postgres
     container_name: store_portfolio
@@ -13,5 +25,10 @@ services:
       - "5432:5432"
     volumes:
       - vol_postgres:/var/lib/postgresql/data
+    networks:
+      - store_network
+
+networks:
+  store_network:
 volumes:
   vol_postgres:
