@@ -30,7 +30,7 @@ jobs:
 
     - name: Migrate prisma
       run: |
-        npx prisma migrate dev --name "descripcion del repo"
+        npx prisma migrate deploy
 
     - name: Run test
       run: |
