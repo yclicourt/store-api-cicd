@@ -2,17 +2,17 @@ FROM node:alpine
 
 RUN mkdir /app
 
-LABEL manteiner="yoadev@mail.com"
-
-LABEL project=store_api_cicd
-
 WORKDIR /app
 
 COPY package*.json ./
 
 RUN npm install
 
+COPY ./src/prisma ./prisma
+
 COPY . .
+
+RUN npx prisma generate
 
 EXPOSE 3000
 

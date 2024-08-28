@@ -1,4 +1,5 @@
 import { sign, verify } from "jsonwebtoken";
+import "dotenv/config";
 
 const JWT_SECRET = process.env.JWT_SECRET ?? "token.01010";
 

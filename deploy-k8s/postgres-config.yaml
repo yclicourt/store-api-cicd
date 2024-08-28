@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: store-api
+data:
+  database-url: cG9zdGdyZXNxbDovL3Bvc3RncmVzOjZxc0liSjY2IVYzOUlSdyFAcG9zdGdyZXMtc3ZjOjU0MzIvc3RvcmVkYg==
