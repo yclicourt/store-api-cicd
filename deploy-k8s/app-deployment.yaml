@@ -20,7 +20,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: postgres-config
-              key: database-url
+              key: DATABASE_URL
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: JWT_SECRET
         resources:
           requests:
             memory: "64Mi"
@@ -44,4 +49,4 @@ spec:
   - protocol: TCP
     port: 3001
     targetPort: 3001
-    nodePort: 30007
+    nodePort: 30100

@@ -8,13 +8,10 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY ./src/prisma ./prisma
-
 COPY . .
 
-RUN npx prisma generate
+COPY ./src/.env ./
 
 EXPOSE 3000
 
-
-CMD [ "npm","start" ]
+CMD npm run generate && npm run migrate && npm start
