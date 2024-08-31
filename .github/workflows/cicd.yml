@@ -11,9 +11,24 @@ on:
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
-
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 6qsIbJ66!V39IRw!
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    env:
+       DATABASE_URL: postgresql://postgres:6qsIbJ66!V39IRw!@localhost:5432/storedb
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js 18
