@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-store
-        image: yoandevelop/store-app-api:v1
+        image: yoandevelop/store-app-api:${{ github.sha }}
         env:
         - name: DATABASE_URL
           valueFrom:

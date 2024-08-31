@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  ci:
   
     runs-on: ubuntu-latest
     services:
@@ -64,3 +64,33 @@ jobs:
         context: .
         push: true
         tags: yoandevelop/store-app-api:${{ github.sha }}
+  
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          repository: medyagh/local-dev-example-with-minikube
+
+      - name: Start minikube
+        uses: medyagh/setup-minikube@latest
+
+      - name: Try the cluster!
+        run: kubectl get pods -A
+
+      - name: Deploy to minikube
+        run: |
+          kubectl create ns store-api
+          kubectl config set-context --current --namespace=store-api
+          kubectl apply -R -f deploy-k8s/
+          kubectl wait --for=condition=ready pod -l app=local-devex
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service local-devex-svc --url
+          echo -n "------------------opening the service------------------"
+          curl $(minikube service local-devex-svc --url)/version
+
