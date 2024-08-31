@@ -25,7 +25,6 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          # Maps tcp port 5432 on service container to the host
           - 5432:5432
     env:
        DATABASE_URL: postgresql://postgres:6qsIbJ66!V39IRw!@localhost:5432/storedb
@@ -39,6 +38,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: |
-        cd /src/prisma
+        cd ./src/prisma
         npx prisma generate && npx prisma migrate dev --name init
     - run: npm test
