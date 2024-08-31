@@ -23,10 +23,10 @@ describe("POST /products", () => {
     title:"test title",
     description:"test description",
     price:1000,
-    categoryId:2,
+    categoryId:1,
     images:"http://test.com"
     });
-    expect(response.statusCode).toEqual(200);
+    expect(response.statusCode).toBe(200);
   });
 
   // should respond with a content of application/json
