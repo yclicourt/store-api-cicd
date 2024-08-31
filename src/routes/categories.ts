@@ -89,7 +89,7 @@ const router = express.Router();
  *                $ref: '#components/schemas/CategoryDTO'
  *
  */
-router.get("/", checkJWT, getItems);
+router.get("/", getItems);
 
 /**
  * @swagger
@@ -119,7 +119,7 @@ router.get("/", checkJWT, getItems);
  *
  *
  */
-router.get("/:id", checkJWT, validatorGetCategory, getItem);
+router.get("/:id", validatorGetCategory, getItem);
 
 /**
  * @swagger
@@ -145,7 +145,7 @@ router.get("/:id", checkJWT, validatorGetCategory, getItem);
  *      500:
  *        description: some server error
  */
-router.post("/", checkJWT, validatorCreateCategory, createItem);
+router.post("/", validatorCreateCategory, createItem);
 
 /**
  * @swagger
@@ -179,7 +179,7 @@ router.post("/", checkJWT, validatorCreateCategory, createItem);
  *
  *
  */
-router.put("/:id", checkJWT, validatorGetCategory, updateItem);
+router.put("/:id", validatorGetCategory, updateItem);
 
 /**
  * @swagger
@@ -209,6 +209,6 @@ router.put("/:id", checkJWT, validatorGetCategory, updateItem);
  *
  *
  */
-router.delete("/:id", checkJWT, validatorGetCategory, deleteItem);
+router.delete("/:id", validatorGetCategory, deleteItem);
 
 export { router };
