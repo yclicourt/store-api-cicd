@@ -85,11 +85,11 @@ jobs:
         run: |
           kubectl create ns store-api
           kubectl config set-context --current --namespace=store-api
-          kubectl apply -f ./deploy-k8s/
+          kubectl apply -f deploy-k8s/
       - name: Test service URLs
         run: |
           minikube service list
           minikube service local-devex-svc --url
-          echo -n "------------------opening the service------------------"
+          echo -n "------------------opening the service-------------------"
           curl $(minikube service local-devex-svc --url)/version
 
