@@ -19,18 +19,16 @@ pipeline {
             }
         }
         stage ('unit-test'){
-            stage('test') {
-                agent {
-                    docker {
-                        image 'node:alpine'
-                        args '-u root:root'
-                    }
+            agent {
+                docker {
+                    image 'node:alpine'
+                    args '-u root:root'
                 }
-                steps {
-                    sh 'npm run test'
-                }
-            }                
-        }         
+            }
+            steps {
+                sh 'npm run test'              
+            }
+        }             
         stage('build') {
             steps {
                sh 'docker build -t $IMAGE:$VERSION .'
