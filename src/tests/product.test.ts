@@ -26,7 +26,7 @@ describe("POST /products", () => {
     categoryId:2,
     images:"http://test.com"
     });
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toEqual(200);
   });
 
   // should respond with a content of application/json
