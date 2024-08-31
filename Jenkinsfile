@@ -26,7 +26,7 @@ pipeline {
                         args '-u root:root'
                         }
                     }
-                    steps {
+                steps {
                         sh 'npm run test'
                     }
                 }                
