@@ -8,7 +8,7 @@ pipeline {
     }
     stages {
         stage('install dependencies') {
-            agent{
+            agent {
                 docker {
                     image 'node:alpine'
                     args '-u root:root'
@@ -20,12 +20,12 @@ pipeline {
         }
         stage ('unit-test'){
             stage('test') {
-                agent{
+                agent {
                     docker {
                         image 'node:alpine'
                         args '-u root:root'
-                        }
                     }
+                }
                 steps {
                     sh 'npm run test'
                 }
