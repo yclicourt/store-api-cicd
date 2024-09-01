@@ -88,7 +88,7 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service local-devex-svc --url
+          minikube service api-store-svc ns store-api --url
           echo -n "------------------opening the service---------------------"
-          curl $(minikube service local-devex-svc --url)/version
+          curl $(minikube service api-store-svc ns store-api --url)/version
 
