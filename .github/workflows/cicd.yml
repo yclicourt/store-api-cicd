@@ -72,8 +72,6 @@ jobs:
 
       - name: Check out code
         uses: actions/checkout@v4
-        with:
-          repository: medyagh/local-dev-example-with-minikube
 
       - name: Start minikube
         uses: medyagh/setup-minikube@latest
@@ -85,11 +83,8 @@ jobs:
         run: |
           kubectl create ns store-api
           kubectl config set-context --current --namespace=store-api
-          kubectl apply -f ./deploy-k8s/postgres-secret.yaml
-          kubectl apply -f ./deploy-k8s/postgres-storage.yaml
-          kubectl apply -f ./deploy-k8s/postgres-deployment.yaml
-          kubectl apply -f ./deploy-k8s/postgres-config.yaml
-          kubectl apply -f ./deploy-k8s/app-deployment.yaml
+          kubectl apply -f ./deploy-k8s/
+
       - name: Test service URLs
         run: |
           minikube service list
