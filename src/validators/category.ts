@@ -5,7 +5,6 @@ import { NextFunction, Request, Response } from "express";
 
 export const validatorCreateCategory = [
   check("name").exists().notEmpty().isString(),
-  check("images").exists().notEmpty(),
   (req: Request, res: Response, next: NextFunction) =>
     validateResult(req, res, next),
 ];

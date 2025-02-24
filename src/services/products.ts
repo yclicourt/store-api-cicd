@@ -1,4 +1,5 @@
 import { Product } from "../interfaces/products.interface";
+import { Storage } from "../interfaces/storage.interface";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -27,7 +28,6 @@ const createProduct = async (item: Product) => {
           id: item.categoryId,
         },
       },
-      images: item.images,
     },
   });
   return responseInsert;
@@ -41,7 +41,6 @@ const updateProduct = async (id: number, data: Product) => {
     data: {
       description: data.description,
       price: data.price,
-      images: data.images,
       title: data.title,
       category: {
         connect: {

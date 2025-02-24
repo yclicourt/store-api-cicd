@@ -20,7 +20,6 @@ const getCategories = async () => {
 const createCategory = async (item: Category) => {
   const responseInsert = await prisma.category.create({
     data: {
-      images: item.images,
       name: item.name,
     },
   });
@@ -33,7 +32,6 @@ const updateCategory = async (id: number, data: Category) => {
       id,
     },
     data: {
-      images: data.images,
       name: data.name,
     },
   });

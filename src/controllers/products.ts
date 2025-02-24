@@ -8,6 +8,7 @@ import {
   productByCategory,
 } from "../services/products";
 import { handleHttp } from "../utils/error.handle";
+import { Product } from "@prisma/client";
 
 const getItem = async (req: Request, res: Response) => {
   try {
@@ -34,6 +35,7 @@ const createItem = async (req: Request, res: Response) => {
     const responseItem = await createProduct(body);
     res.send(responseItem);
   } catch (error) {
+    console.log(error);
     handleHttp(res, "ERROR_CREATE_ITEM");
   }
 };
@@ -51,9 +53,9 @@ const deleteItem = async (req: Request, res: Response) => {
   try {
     const deletedId = parseInt(req.params.id);
     await deleteProduct(deletedId);
-    res
-      .status(200)
-      .json({ message: `Has been eliminated a product with a id ${deletedId}` });
+    res.status(200).json({
+      message: `Has been eliminated a product with a id ${deletedId}`,
+    });
   } catch (error: any) {
     if (error?.code === "P2025") {
       res.status(400).json({ message: "Product not found" });

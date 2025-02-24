@@ -156,7 +156,7 @@ router.get("/:id", validatorGetProduct, getItem);
  *        description: some server error
  */
 
-router.post("/", validatorCreateProduct, createItem);
+router.post("/",validatorCreateProduct, createItem);
 
 /**
  * @swagger
