@@ -6,6 +6,7 @@ import { NextFunction, Request, Response } from "express";
 export const validatorCreateProduct = [
   check("title").exists().notEmpty().isString(),
   check("price").exists().notEmpty().isNumeric(),
+  check("images").exists().notEmpty().isString(),
   check("description").exists().notEmpty().isString(),
   (req: Request, res: Response, next: NextFunction) =>
     validateResult(req, res, next),

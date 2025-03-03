@@ -12,6 +12,7 @@ import {
   validatorCreateProduct,
   validatorGetProduct,
 } from "../validators/product";
+import multerMiddleware from "../middleware/file";
 
 const router = express.Router();
 
@@ -156,7 +157,7 @@ router.get("/:id", validatorGetProduct, getItem);
  *        description: some server error
  */
 
-router.post("/",validatorCreateProduct, createItem);
+router.post("/",multerMiddleware.single("myImage"), createItem);
 
 /**
  * @swagger
