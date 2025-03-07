@@ -31,20 +31,8 @@ const getItems = async (req: Request, res: Response) => {
 };
 const createItem = async (req: Request, res: Response) => {
   try {
-    const { file, body } = req;
-    const dataRegister: Product = {
-      id: 1,
-      description: "",
-      title: "",
-      price: 2300,
-      categoryId: 1,
-      images: `${file?.filename}`,
-    };
-
-    if (!dataRegister.images) {
-      res.status(400).json({ message: "All fields required" });
-    }
-    const responseItem = await createProduct(dataRegister);
+    const { body } = req;
+    const responseItem = await createProduct(body);
     res.send(responseItem);
   } catch (error) {
     console.log(error);

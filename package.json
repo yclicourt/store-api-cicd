@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/server.ts",
+    "dev": "bun run --watch ./src/server.ts",
     "build": "tsc",
-    "start": "node ./dist/server.js",
+    "start": "bun run ./dist/server.js",
     "test": "jest",
-    "generate":"npx prisma generate ",
-    "migrate":"npx prisma migrate dev --name init",
+    "generate":"bunx prisma generate ",
+    "migrate":"bunx prisma migrate dev --name init",
     "test:watch": "jest --watchAll --detectOpenHandles"
   },
   "keywords": [],
